@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  node:
+    image: appimage
+    restart: always
+    ports:
+      - 81:9000
+    depends_on:
+    - mongo
+    networks:
+    - appnet
+    
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+    - appnet
+    
+networks:
+ appnet:
+  driver: bridge
+
+
